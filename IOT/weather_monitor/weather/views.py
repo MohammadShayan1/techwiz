@@ -1,17 +1,26 @@
 from django.http import JsonResponse
-from .models import WeatherData
+from .models import SensorData
 from django.shortcuts import render
+import json
+from django.views.decorators.csrf import csrf_exempt
+from .models import SensorData
 
-def record_weather_data(request):
+@csrf_exempt
+def receive_sensor_data(request):
     if request.method == 'POST':
-        temperature = request.POST.get('temperature')
-        humidity = request.POST.get('humidity')
-        if temperature and humidity:
-            weather = WeatherData(temperature=temperature, humidity=humidity)
-            weather.save()
-            return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'failed'}, status=400)
+        try:
+            data = json.loads(request.body)
+            temperature = data.get('temperature')
+            humidity = data.get('humidity')
+
+            # Save the sensor data to the database
+            SensorData.objects.create(temperature=temperature, humidity=humidity)
+
+            return JsonResponse({'status': 'success', 'message': 'Data received and saved successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 def display_weather_data(request):
-    weather_data = WeatherData.objects.all().order_by('-timestamp')
+    weather_data = SensorData.objects.all().order_by('-timestamp')
     return render(request, 'weather.html', {'weather_data': weather_data})
