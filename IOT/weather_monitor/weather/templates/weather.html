@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://source.unsplash.com/1600x900/?nature,sky,weather');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .table-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Monitoring System</h1>
+        <div class="table-container mt-5">
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Temperature (°C)</th>
+                        <th scope="col">Humidity (%)</th>
+                        <th scope="col">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in weather_data %}
+                    <tr>
+                        <td>{{ data.temperature }}</td>
+                        <td>{{ data.humidity }}</td>
+                        <td>{{ data.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

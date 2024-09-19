@@ -1,0 +1,27 @@
+import Adafruit_DHT
+import requests
+import time
+
+sensor = Adafruit_DHT.DHT11
+pin = 4
+
+def get_sensor_data():
+    humidity, temperature = Adafruit_DHT.read(sensor, pin)
+    if humidity is not None and temperature is not None:
+        return {
+            'temperature': temperature,
+            'humidity': humidity
+        }
+    else:
+        return None
+
+while True:
+    data = get_sensor_data()
+    if data:
+        print(f"Temperature: {data['temperature']}°C, Humidity: {data['humidity']}%")
+        try:
+            response = requests.post("http://your-django-server-ip/weather_data", data=data)
+            print(f"Data sent to server: {response.status_code}")
+        except:
+            print("Failed to send data to server")
+    time.sleep(60)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring</title>
+</head>
+<body>
+    <h1>Weather Monitoring System</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in weather_data %}
+            <tr>
+                <td>{{ data.temperature }}</td>
+                <td>{{ data.humidity }}</td>
+                <td>{{ data.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
