@@ -35,7 +35,7 @@ py manage.py runserver 0.0.0.0:8000
 | ------------- | ------------- |
 | Student1334497 | Amna Mustafa |
 | Student1413931 | Mohammad Shayan |
-| Student1413950 | Moiz Ahmed Khan |
+| Student1413950 | Shahmeer Fareed |
 
 ## ⚙️ Languages & Tools we used:
 <p align="left">
