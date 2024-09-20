@@ -8,5 +8,4 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('weather_data/', views.receive_sensor_data, name='weather_data'),
     path('', views.display_weather_data, name='display_weather_data'),
-    path('',static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)),
 ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,48 +7,60 @@
     <title>Weather Monitoring</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        {% load static %}
-            body {
-                background-image: url('{% static "bg.jpg" %}');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                color: white;
-            }
-        .table-container {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-        }
-        h1 {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 3em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .table-dark {
-            color: #fff;
-        }
-        canvas {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 40px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-        }
-        .chart-container {
-            margin-top: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <div class="container">
+    <header id="header">
+        <nav class="navbar navbar-expand-md">
+          <div class="container">
+              <a class="navbar-brand" href="/"><img src="{% static 'images/viroshield-logo.png' %}" alt="" srcset=""></a>
+              <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                  <a class="navbar-brand" href="/"><img src="{% static 'images/viroshield-logo.png' %}" alt="" srcset=""></a>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3">
+                      <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#features">Features</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#about">About</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#faq">FAQs</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/admin">Login</a>
+                      </li>
+                  </ul>
+              </div>
+              </div>
+          </div>
+        </nav>
+      </header>
+      <main id="main">
+        <section id="hero" class="pb-5 d-flex align-items-center">
+            <div class="container">
+              <div class="row gx-md-5 flex-column-reverse flex-md-row">
+                <div class="col-md-7 align-items-center d-flex">
+                  <div class="hero-inner">
+                    <h5 class="fw-bold">Weather Ninja: Your Weather Station</h5>
+                    <h2 class="section-title display-6 fw-bold">Predict, Protect, Prevent</h2>
+                    <p class="lead">Empowering you with data-driven insights to stay ahead of viral threats. ViroShield utilizes the power of Big Data techniques to predict, protect, and prevent potential health risks. Stay informed and safeguard your well-being with real-time updates.</p>
+                    <a href="#symptomsChecker" class="btn btn-outline-primary fw-bold rounded-pill">Get Started</a>
+                  </div>
+                </div>
+                <div class="col-md-5 align-items-center d-flex">
+                  <img id="hero-img" src="{% static 'images/viroshield.svg' %}" alt="" class="img-fluid mb-5 mb-md-0">
+                </div>
+              </div>
+            </div>
+        </section>
+            <div class="container">
         <h1>Weather Monitoring System</h1>
 
         <div class="chart-container">
@@ -75,6 +88,70 @@
             </table>
         </div>
     </div>
+    <section id="faq" class="py-5 my-5">
+        <div class="container">
+            <h2 class="section-title text-center display-5">Frequently Asked Questions</h2>
+            <p class="lead text-center mb-5">Questions about ViroShield? Find answers below!</p>
+            
+            <!-- FAQs -->
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            How does ViroShield predict health threats?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            ViroShield employs advanced Big Data techniques to analyze various datasets and trends, enabling accurate predictions for potential health threats based on historical data and patterns.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            How can ViroShield help in preventing health issues?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            By providing predictive analytics, ViroShield empowers users with insights to take timely precautions and actions, preventing potential health issues and contributing to overall well-being.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Is ViroShield's data analysis accurate and reliable?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            Yes, ViroShield's data analysis is built on robust methodologies, ensuring accurate predictions by continuously refining algorithms and incorporating up-to-date data sources.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            How do I start using ViroShield?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            Getting started with ViroShield is easy. Sign up, input relevant health data, and let our predictive tools guide you towards a safer, healthier life.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center text-white py-4">Made with ❤️ by Code Titans &copy;</div>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -83,6 +160,8 @@
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'main.js' %}"></script>
     <script>
         // The limited weather data is already passed from views.py
         var limitedWeatherData = {
