@@ -16,7 +16,7 @@ py manage.py runserver 0.0.0.0:8000
 
 ## Admin Credentials
 - Username: techwiz
-- Email: admin@mindunit.com
+- Email: admin@codetitans.com
 - Password: abc@123456789
 
 ## 🔗 Routes
