@@ -1,9 +1,8 @@
 from django.http import JsonResponse
-from .models import SensorData
 from django.shortcuts import render
-import json
 from django.views.decorators.csrf import csrf_exempt
 from .models import SensorData
+import json
 
 @csrf_exempt
 def receive_sensor_data(request):
@@ -22,5 +21,6 @@ def receive_sensor_data(request):
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 def display_weather_data(request):
-    weather_data = SensorData.objects.all().order_by('-timestamp')
+    # Fetch the last 5 entries ordered by the most recent timestamp
+    weather_data = SensorData.objects.all().order_by('-timestamp')[:5]
     return render(request, 'weather.html', {'weather_data': weather_data})
