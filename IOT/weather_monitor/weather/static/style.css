@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
-html,body{font-size:15px;font-weight:400;font-family:'Jost', sans-serif;color:var(--dark);background-color:var(--light);
-background-image: url('bg.jpg');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;}
+html,body{font-size:15px;font-weight:400;font-family:'Jost', sans-serif;color:var(--dark);background-color:var(--light)}
 
 :root{
   --primary:#102542;
-  --secondary: #e84545;
+  --secondary: #2AA890;
   --purple:#6C63FF;
   --light:#f8f9fa;
-  --dark:#252525;
+  --dark:#455A64;
   --bg: #FFF9F5;
 }
 
@@ -32,41 +28,11 @@ input:focus{box-shadow:none !important}
 .navbar-toggler:focus{box-shadow:none}
 .nav-link{font-size: 17px;}
 /* hero-section */
-#hero{padding-top: 8rem;min-height:100vh;background:var(--bg) url('images/bg-faint-orange.svg') left center no-repeat;background-size:cover}
+#hero{padding-top: 8rem;min-height:100vh;background:var(--bg) url('./bg-faint-greenblue.svg') left center no-repeat;background-size:cover}
 #hero h5{color:var(--secondary)}
 /* features-section */
 #features{background:var(--primary)}
 #features i{color:var(--secondary);font-size:50px}
-/* chart */
-.table-container {
-background: rgba(0, 0, 0, 0.75);
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-}
-h1 {
-text-align: center;
-margin-top: 30px;
-font-size: 3em;
-font-weight: bold;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-.table-striped tbody tr:nth-of-type(odd) {
-background-color: rgba(255, 255, 255, 0.1);
-}
-.table-dark {
-color: #fff;
-}
-canvas {
-background: rgba(255, 255, 255, 0.2);
-border-radius: 8px;
-padding: 20px;
-margin-top: 40px;
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-}
-.chart-container {
-margin-top: 40px;
-}
 /* faq-section */
 #faq{background-color:var(--light)}
 #faq .accordion-button{padding:2.25rem;font-size:1.2rem;font-weight:600}
@@ -80,4 +46,41 @@ margin-top: 40px;
 
 @media(max-width: 575px){
 .navbar-brand{height:60px}
+}
+
+/* animations */
+@keyframes tick{
+  0%{opacity:1;transform:scale(1) rotateY(0deg)}
+  50%{opacity:0;transform:scale(.8) rotateY(180deg)}
+  100%{opacity:1;transform:scale(1) rotateY(360deg)}
+}
+/* chart */
+.table-container {
+background: rgba(0, 0, 0, 0.75);
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+color: var(--primary);
+}
+.table-striped tbody tr:nth-of-type(odd) {
+background-color: rgba(255, 255, 255, 0.1);
+}
+.table-dark {
+color: #fff;
+}
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);}
+canvas {
+background: rgba(255, 255, 255, 0.2);
+border-radius: 8px;
+padding: 20px;
+margin-top: 40px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.chart-container {
+margin-top: 40px;
 }

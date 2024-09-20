@@ -9,8 +9,128 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+<style>
+    body {
+        font-family: Sofadi One;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    .faq {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .faq-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .faq-item {
+        margin-bottom: 15px;
+        font-size:20px;
+    }
+
+    .faq-question {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .faq-answer {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: none;
+    }
+
+    .faq-answer.active {
+        display: block;
+    }
+
+    .plus-icon {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .faq-question.active .plus-icon {
+        transform: rotate(90deg);
+    }
+    nav {
+        {% comment %} background-color: white; {% endcomment %}
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        text-decoration: none;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links li {
+        margin-left: 20px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #2b547e;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+    }
+    .head{
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .head-p{
+        font-weight: bold;
+        font-size: 50px;
+        text-shadow: 2px 2px #151b54;
+    }
+    .para-p{
+        {% comment %} font-weight: bold; {% endcomment %}
+        font-size: 20px;
+    }
+</style>
 <body>
-    <header id="header">
+    {% comment %} <header id="header">
         <nav class="navbar navbar-expand-md">
           <div class="container">
               <a class="navbar-brand" href="/"><img src="{% static 'images/viroshield-logo.png' %}" alt="" srcset=""></a>
@@ -33,35 +153,45 @@
                       <li class="nav-item">
                           <a class="nav-link" href="#faq">FAQs</a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="/admin">Login</a>
-                      </li>
+                      <!-- Assuming this is in a template file -->
                   </ul>
               </div>
               </div>
           </div>
         </nav>
-      </header>
+      </header> {% endcomment %}
+      <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.svg" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+    </nav>
       <main id="main">
         <section id="hero" class="pb-5 d-flex align-items-center">
             <div class="container">
               <div class="row gx-md-5 flex-column-reverse flex-md-row">
                 <div class="col-md-7 align-items-center d-flex">
                   <div class="hero-inner">
-                    <h5 class="fw-bold">Weather Ninja: Your Weather Station</h5>
-                    <h2 class="section-title display-6 fw-bold">Predict, Protect, Prevent</h2>
-                    <p class="lead">Empowering you with data-driven insights to stay ahead of viral threats. ViroShield utilizes the power of Big Data techniques to predict, protect, and prevent potential health risks. Stay informed and safeguard your well-being with real-time updates.</p>
-                    <a href="#symptomsChecker" class="btn btn-outline-primary fw-bold rounded-pill">Get Started</a>
+                    <h5 class="fw-bold  head">Weather Ninja: Your Weather Station</h5>
+                    <h2 class="section-title display-6 fw-bold head-p">Predict, Protect, Prevent</h2>
+                    <p class="lead">Our weather monitoring system empowers you to Predict changes with accurate forecasts, Protect lives and assets through timely alerts, and Prevent damage by enabling proactive actions against severe weather conditions. </p>
+                    <a href="#weathersystem" class="btn btn-outline-primary fw-bold rounded-pill">See Weather</a>
                   </div>
                 </div>
                 <div class="col-md-5 align-items-center d-flex">
-                  <img id="hero-img" src="{% static 'images/viroshield.svg' %}" alt="" class="img-fluid mb-5 mb-md-0">
+                  <img id="hero-img" src="{% static 'viroshield.svg' %}" alt="" class="img-fluid mb-5 mb-md-0">
                 </div>
               </div>
             </div>
         </section>
-            <div class="container">
-        <h1>Weather Monitoring System</h1>
+            {% comment %} <div class="container">
+        <h3 id="weathersystem" >Weather Monitoring System</h1>
 
         <div class="chart-container">
             <canvas id="weatherChart"></canvas>
@@ -87,8 +217,72 @@
                 </tbody>
             </table>
         </div>
+    </div> {% endcomment %}
+    <div class="container">
+        <h3 id="weathersystem" class="text-center my-4 head-p">Weather Monitoring System</h3>
+    
+        <div class="row">
+            <div class="col-12">
+                <div class="chart-container">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Temperature (°C)</th>
+                                <th scope="col">Humidity (%)</th>
+                                <th scope="col">Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in weather_data %}
+                            <tr>
+                                <td>{{ data.temperature }}</td>
+                                <td>{{ data.humidity }}</td>
+                                <td>{{ data.timestamp }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <section id="faq" class="py-5 my-5">
+    
+    <section id="about" class="bg-white py-5 my-4">
+        <div class="container">
+          <h2 class="section-title text-center display-5 mb-1  head-p" >About Weather Ninja</h2>
+          <div class="row g-5">
+            <div class="col-lg-7">
+                <p class="about-desc mt-3 mb-5 fs-5 text-secondary para-p">Our system uses advanced algorithms and real-time data to provide accurate weather forecasts, helping you stay ahead of changing conditions. With timely alerts for severe weather, we help safeguard lives, infrastructure, and resources by enabling proactive safety measures.</p>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="about-card">
+                              <h4 class="about-card-title"> 1. Advanced Analytics</h3>
+                              {% comment %} <p class="about-card-desc text-secondary">Our platform leverages state-of-the-art data analytics techniques to analyze trends, patterns, and historical data related to viral outbreaks. We transform raw data into actionable insights.</p> {% endcomment %}
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="about-card">
+                              <h4 class="about-card-title">2. Real-time Updates</h3>
+                              {% comment %} <p class="about-card-desc text-secondary">Stay informed with real-time updates on the rise of viral cases and health issues. Our dashboard provides visualizations and predictions to keep you aware and safe.</p> {% endcomment %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-5 text-end">
+                  <img id="about-img" src="{% static './about.png' %}" class="img-fluid" alt="ViroShield">
+              </div>
+          </div>
+        </div>
+    </section>
+    {% comment %} <section id="faq" class="py-5 my-5">
         <div class="container">
             <h2 class="section-title text-center display-5">Frequently Asked Questions</h2>
             <p class="lead text-center mb-5">Questions about ViroShield? Find answers below!</p>
@@ -145,7 +339,49 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
+    <div class="faq">
+        <h2 class=" head-p">Frequently Asked Questions</h2>
+        <p class="para-p">Below are some common questions about our weather monitoring system:        </p>
+        <ul class="faq-list">
+            <li class="faq-item">
+                <div class="faq-question">
+                    What sensors are used in this weather monitoring system?
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This system uses a DHT11 sensor for temperature and humidity, a rain sensor to detect rainfall, and a pressure sensor to monitor atmospheric pressure.</p>
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question">
+                    How accurate is the weather data collected?
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p> The system provides reasonably accurate readings. The DHT11 sensor has a temperature accuracy of ±2°C and humidity accuracy of ±5%, making it suitable for basic weather monitoring.</p>
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question">
+                    Can I view real-time weather updates?
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, the system is designed to provide real-time weather updates, allowing you to access current conditions such as temperature, humidity, rainfall, and pressure levels.</p>
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question">
+                    How is the data from the sensors stored and processed?
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The data collected from the sensors is processed by the Raspberry Pi and can be stored in a database for historical tracking, or displayed on a dashboard for live monitoring.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
 </main>
     <footer id="footer">
         <div class="container">
@@ -208,6 +444,17 @@
                     }
                 }
             }
+        });
+    </script>
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                question.classList.toggle('active');
+                answer.classList.toggle('active');
+            });
         });
     </script>
 </body>
