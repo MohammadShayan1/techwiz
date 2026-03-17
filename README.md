@@ -25,11 +25,7 @@ py manage.py runserver 0.0.0.0:8000
 - `/admin` : Admin Dashboard
 - `/admin/login` : Admin Login
 
-## 🔗 Important Links
-- [Figma ProtoType](https://www.figma.com/proto/eog5uf4qzKnbrPt2z2ymgT/ViroShield?type=design&node-id=1-2&t=H7V3aKDiBSrUN3Sm-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&mode=design)
-- [Github Repo](https://github.com/TeamMindUnit/MindUnit--TechWiz-2023/tree/main)
-
-## Team Behind ViroShield
+## Team Behind Weather Ninja
 
 | Student Id | Student Name |
 | ------------- | ------------- |
